@@ -27,6 +27,7 @@ echo "---- start-end with multiple versions variants -----"
 start=(1 1 1)
 end=(8 4 5)
 
+versions=()
 for major in $(seq ${start[0]} 1 ${end[0]})
 do
     for minor in $(seq ${start[1]} 1 ${end[1]})
@@ -34,10 +35,17 @@ do
         for fix in $(seq ${start[2]} 1 ${end[2]})
         do
             newver="$major.$minor.$fix"
-            echo $newver
+            versions+=($newver)
+            # todo: put them in an array 
+            # echo $newver
         done
     done
 done
 
+printf "[%s], " "${versions[@]}"
 
 
+
+
+
+n
