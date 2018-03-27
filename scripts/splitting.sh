@@ -48,15 +48,27 @@ function join_by { local IFS="$1"; shift; echo "$*"; }
 # tofix : not best way of doing it
 
 newversion=""
-if [ arr[2] != 9 ];
-then let arr[2]=$((arr[2]+1));
-else
+if [ ${arr[2]} -eq 9 ];
+then
     if [ arr[1] == 9 ];
        then let arr[0]=arr[0]+1; let arr[1]=0; let arr[2]=0;
        else let arr[1]=arr[1]+1; let arr[2]=0;
     fi
+else let arr[2]=$((arr[2]+1));
 fi
 
 newver=$(join_by . "${arr[@]}")
 
 echo "New Version: ${newver}"
+
+echo "interval of two version"
+
+start="0.0.1"
+end="0.0.4"
+
+# goal is to generate : 0.0.1, 0.0.2, 0.0.3, 0.0.4
+IFS=. read -ra startArr <<< "$start";
+IFS=. read -ra endArr <<< "$end";
+
+
+
