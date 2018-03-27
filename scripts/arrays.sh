@@ -15,3 +15,15 @@ echo ${arr[@]:1}
 echo ${arr[@]:2:4}
 
 echo "length of arr: ${#arr[*]} or ${#arr[@]}"
+
+# we need a function that takes an array that get passed an arg and we loop through them
+function takesarr {
+    echo "takesarr: "
+    param1=("${!1}")
+    for i in ${param1[@]}
+    do
+        echo ${i}
+    done
+}
+
+takesarr arr[@]
